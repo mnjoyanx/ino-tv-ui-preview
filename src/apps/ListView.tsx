@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 const ListView: FC = () => {
   const items = ["Item 1", "Item 2", "Item 3", "Item 4"];

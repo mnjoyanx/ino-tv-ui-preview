@@ -172,7 +172,7 @@ const ListViewComponent: FC = () => {
               renderItem={({ index, style, isActive, item }) => (
                 <div
                   style={style}
-                  key={item.id}
+                  key={item.id + index}
                   className={`${styles.item} ${isActive ? styles.active : ""}`}
                 >
                   <div className="w-[90%] h-[90%]">
