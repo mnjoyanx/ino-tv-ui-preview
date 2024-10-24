@@ -4,6 +4,7 @@ import Checkbox from "./apps/Checkbox";
 import ListViewComponent from "./apps/ListViewComponent";
 import ModalComponent from "./apps/ModalComponent"; // Import the new Modal component
 import Sidebar from "./layouts/Sidebar";
+import GridViewComponent from "./apps/GridViewComponent"; // Import the new GridView component
 
 const CheckboxPage = () => (
   <>
@@ -20,7 +21,7 @@ const App = () => {
           <Routes>
             <Route
               path="/modal"
-              element={<ModalComponent />} // Use the new Modal component
+              element={<ModalComponent />}
             />
             <Route
               path="/checkbox"
@@ -29,6 +30,10 @@ const App = () => {
             <Route
               path="/listview"
               element={<ListViewComponent />}
+            />
+            <Route
+              path="/gridview"
+              element={<GridViewComponent />} // Add the new GridView route
             />
           </Routes>
         </main>

@@ -44,6 +44,16 @@ const Sidebar = () => {
               ListView
             </Link>
           </li>
+          <li>
+            <Link
+              to="/gridview"
+              className={`hover:text-blue-500 block ${
+                isActive("/gridview") ? "text-blue-600 font-semibold" : ""
+              }`}
+            >
+              GridView
+            </Link>
+          </li>
         </ul>
       </div>
     </aside>
