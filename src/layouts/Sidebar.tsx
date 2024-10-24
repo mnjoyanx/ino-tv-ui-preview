@@ -17,8 +17,8 @@ const Sidebar = () => {
           <li>
             <Link
               to="/"
-              className={`hover:text-blue-500 block ${
-                isActive("/") ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-primary block ${
+                isActive("/") ? "text-primary font-semibold" : ""
               }`}
             >
               Introduction
@@ -28,8 +28,8 @@ const Sidebar = () => {
           <li>
             <Link
               to="/modal"
-              className={`hover:text-blue-500 block ${
-                isActive("/modal") ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-primary block ${
+                isActive("/modal") ? "text-primary font-semibold" : ""
               }`}
             >
               Modal
@@ -38,8 +38,8 @@ const Sidebar = () => {
           <li>
             <Link
               to="/checkbox"
-              className={`hover:text-blue-500 block ${
-                isActive("/checkbox") ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-primary block ${
+                isActive("/checkbox") ? "text-primary font-semibold" : ""
               }`}
             >
               Checkbox
@@ -48,8 +48,8 @@ const Sidebar = () => {
           <li>
             <Link
               to="/listview"
-              className={`hover:text-blue-500 block ${
-                isActive("/listview") ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-primary block ${
+                isActive("/listview") ? "text-primary font-semibold" : ""
               }`}
             >
               ListView
@@ -58,8 +58,8 @@ const Sidebar = () => {
           <li>
             <Link
               to="/gridview"
-              className={`hover:text-blue-500 block ${
-                isActive("/gridview") ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-primary block ${
+                isActive("/gridview") ? "text-primary font-semibold" : ""
               }`}
             >
               GridView
