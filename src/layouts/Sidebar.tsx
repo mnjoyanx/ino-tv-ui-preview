@@ -16,6 +16,17 @@ const Sidebar = () => {
         <ul className="space-y-4">
           <li>
             <Link
+              to="/"
+              className={`hover:text-blue-500 block ${
+                isActive("/") ? "text-blue-600 font-semibold" : ""
+              }`}
+            >
+              Introduction
+            </Link>
+          </li>
+
+          <li>
+            <Link
               to="/modal"
               className={`hover:text-blue-500 block ${
                 isActive("/modal") ? "text-blue-600 font-semibold" : ""

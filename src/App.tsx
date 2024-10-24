@@ -5,6 +5,7 @@ import ListViewComponent from "./apps/ListViewComponent";
 import ModalComponent from "./apps/ModalComponent"; // Import the new Modal component
 import Sidebar from "./layouts/Sidebar";
 import GridViewComponent from "./apps/GridViewComponent"; // Import the new GridView component
+import IntroductionPage from "./pages/IntruductionPage"; // Import the new Introduction component
 
 const CheckboxPage = () => (
   <>
@@ -19,6 +20,11 @@ const App = () => {
         <Sidebar />
         <main className="w-[calc(100%-256px)] ml-[256px]">
           <Routes>
+            <Route
+              path="/"
+              element={<IntroductionPage />}
+            />
+
             <Route
               path="/modal"
               element={<ModalComponent />}
