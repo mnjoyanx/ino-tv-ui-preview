@@ -196,6 +196,12 @@ const GridViewComponent: FC = () => {
               uniqueKey="gridview-1"
               data={items}
               isActive={true}
+              onChangeRow={() => {}}
+              onUp={() => {}}
+              onDown={() => {}}
+              onLeft={() => {}}
+              onRight={() => {}}
+              onBack={() => {}}
               itemsTotal={items.length}
               rowItemsCount={3}
               rowCount={3}

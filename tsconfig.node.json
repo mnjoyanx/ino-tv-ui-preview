@@ -10,7 +10,7 @@
     "allowImportingTsExtensions": false,
     "isolatedModules": false,
     "moduleDetection": "force",
-    "noEmit": false,
+    "noEmit": true,
 
     /* Linting */
     "strict": false,
@@ -20,5 +20,6 @@
     "allowUnusedLabels": true
   },
   "include": ["vite.config.ts"],
-  "exclude": ["node_modules", "dist", "build", "tv-ui-preview", "src/*.tsx"]
+  "exclude": ["node_modules", "dist", "build", "tv-ui-preview", "src/*.tsx", "src/apps/GridViewComponent.tsx"] 
 }
+ 
