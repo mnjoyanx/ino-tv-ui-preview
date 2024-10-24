@@ -3,13 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://mnjoyaxn.github.io/ino-tv-ui-preview",
+  "homepage": "https://mnjoyanx.github.io/ino-tv-ui-preview",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
