@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense, useEffect, useState } from "react";
 import { ListView } from "ino-ui-tv";
 import {
   Table,
@@ -14,25 +14,45 @@ import { Copy } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import styles from "./listview.module.scss";
+import InoImage from "@/components/InoImage";
+import axios from "axios";
 
 const ListViewComponent: FC = () => {
-  const items = [
-    { id: 1, name: "Item 1", image: "https://placehold.co/400" },
-    { id: 2, name: "Item 2", image: "https://placehold.co/400" },
-    { id: 3, name: "Item 3", image: "https://placehold.co/400" },
-    { id: 4, name: "Item 4", image: "https://placehold.co/400" },
-    { id: 5, name: "Item 5", image: "https://placehold.co/400" },
-    { id: 6, name: "Item 6", image: "https://placehold.co/400" },
-    { id: 7, name: "Item 7", image: "https://placehold.co/400" },
-    { id: 8, name: "Item 8", image: "https://placehold.co/400" },
-    { id: 9, name: "Item 9", image: "https://placehold.co/400" },
-    { id: 10, name: "Item 10", image: "https://placehold.co/400" },
-    { id: 11, name: "Item 11", image: "https://placehold.co/400" },
-    { id: 12, name: "Item 12", image: "https://placehold.co/400" },
-    { id: 13, name: "Item 13", image: "https://placehold.co/400" },
-    { id: 14, name: "Item 14", image: "https://placehold.co/400" },
-    { id: 15, name: "Item 15", image: "https://placehold.co/400" },
-  ];
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const apiKey = "30888e8f271f1698dcfb0228f589bec1"; // Replace with your TMDb API key
+      const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&vote_count.gte=100&per_page=10`;
+
+      try {
+        const response = await axios.get(apiUrl);
+        console.log(response.data);
+        getMovieImages(response.data.results);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
+  const getMovieImage = async (movieId: string) => {
+    const apiKey = "30888e8f271f1698dcfb0228f589bec1"; // Replace with your TMDb API key
+    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${apiKey}`;
+    const response = await axios.get(apiUrl);
+    return response.data.posters[0].file_path;
+  };
+
+  const getMovieImages = async (movies: any[]) => {
+    const movieImages = await Promise.all(
+      movies.map(async (movie) => {
+        const image = await getMovieImage(movie.id);
+        return { image, id: movie.id, title: movie.title };
+      })
+    );
+    setMovies(movieImages);
+  };
 
   const propsData = [
     {
@@ -160,14 +180,14 @@ const ListViewComponent: FC = () => {
             <ListView
               id="example_list"
               uniqueKey="example-list"
-              itemsTotal={items.length}
+              itemsTotal={movies.length}
               itemsCount={2}
               listType="horizontal"
               itemWidth={24}
               itemHeight={27}
               isActive={true}
               buffer={5}
-              debounce={100}
+              debounce={200}
               nativeControle={true}
               renderItem={({ index, style, isActive, item }) => (
                 <div
@@ -176,16 +196,23 @@ const ListViewComponent: FC = () => {
                   className={`${styles.item} ${isActive ? styles.active : ""}`}
                 >
                   <div className="w-[90%] h-[90%]">
-                    <img
-                      src={item.image}
-                      alt={item.name}
+                    {/* <img
+                      src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.image}`}
+                      alt={item.title}
                       className="w-full h-auto mb-2 rounded"
+                      decoding="async"
+                      fetchPriority="high"
+                      // srcSet={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.image} 1x, https://image.tmdb.org/t/p/w1200_and_h1800_bestv2/${item.image} 2x`}
+                    /> */}
+                    <InoImage
+                      src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.image}`}
+                      alt={item.title}
                     />
                   </div>
-                  <p>{item.name}</p>
+                  <p>{item.title}</p>
                 </div>
               )}
-              data={items}
+              data={movies}
               onBackScrollIndex={0}
             />
           </div>

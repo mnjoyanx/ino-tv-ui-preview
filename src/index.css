@@ -70,3 +70,8 @@ button:focus-visible {
 .active {
   background: #6d717b !important;
 }
+
+.toast {
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+}

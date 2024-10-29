@@ -13,7 +13,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Copy } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import "ino-ui-tv/dist/styles/styles.css";
 import styles from "./gridview.module.scss";
 
 const GridViewComponent: FC = () => {
