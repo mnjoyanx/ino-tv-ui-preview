@@ -108,6 +108,7 @@ const ModalComponent: FC = () => {
               }
               okBtnText="OK"
               cancelBtnText="Cancel"
+              closeOnOverlayClick={true}
             />
           </div>
         </TabsContent>

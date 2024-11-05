@@ -27,6 +27,17 @@ const Sidebar = () => {
 
           <li>
             <Link
+              to="/theme"
+              className={`hover:text-primary block ${
+                isActive("/theme") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              ThemeProvider
+            </Link>
+          </li>
+
+          <li>
+            <Link
               to="/button"
               className={`hover:text-primary block ${
                 isActive("/button") ? "text-primary font-semibold" : ""

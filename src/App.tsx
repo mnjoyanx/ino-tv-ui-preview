@@ -8,6 +8,8 @@ import GridViewComponent from "./apps/GridViewComponent"; // Import the new Grid
 import IntroductionPage from "./pages/IntruductionPage"; // Import the new Introduction component
 import ButtonPage from "./pages/ButtonPage";
 import { Toaster } from "./components/ui/sonner";
+import { ThemeProvider } from "ino-ui-tv";
+import ThemeProviderPage from "./pages/ThemeProviderPage";
 
 const CheckboxPage = () => (
   <>
@@ -19,40 +21,65 @@ const App = () => {
   return (
     <Router>
       <Toaster />
+      <ThemeProvider
+        theme={{
+          colors: {
+            primary: "#fb923c",
+            secondary: "#292524",
+            danger: "#ef4444",
+            warning: "#f59e0b",
+            text: {
+              primary: "#fff",
+              secondary: "#fb923c",
+              danger: "#ef4444",
+              warning: "#f59e0b",
+            },
+          },
+        }}
+      >
+        <div className="app bg-stone-100 flex">
+          <Sidebar />
+          <main className="w-[calc(100%-256px)] ml-[256px]">
+            <Routes>
+              <Route
+                path="/"
+                element={<IntroductionPage />}
+              />
 
-      <div className="app bg-stone-100 flex">
-        <Sidebar />
-        <main className="w-[calc(100%-256px)] ml-[256px]">
-          <Routes>
-            <Route
-              path="/"
-              element={<IntroductionPage />}
-            />
+              <Route
+                path="/theme"
+                element={<ThemeProviderPage />}
+              />
 
-            <Route
-              path="/button"
-              element={<ButtonPage />}
-            />
+              <Route
+                path="/button"
+                element={<ButtonPage />}
+              />
 
-            <Route
-              path="/modal"
-              element={<ModalComponent />}
-            />
-            <Route
-              path="/checkbox"
-              element={<CheckboxPage />}
-            />
-            <Route
-              path="/listview"
-              element={<ListViewComponent />}
-            />
-            <Route
-              path="/gridview"
-              element={<GridViewComponent />} // Add the new GridView route
-            />
-          </Routes>
-        </main>
-      </div>
+              <Route
+                path="/modal"
+                element={<ModalComponent />}
+              />
+              <Route
+                path="/checkbox"
+                element={<CheckboxPage />}
+              />
+              <Route
+                path="/listview"
+                element={<ListViewComponent />}
+              />
+              <Route
+                path="/gridview"
+                element={<GridViewComponent />} // Add the new GridView route
+              />
+              <Route
+                path="/theme"
+                element={<ThemeProviderPage />}
+              />
+            </Routes>
+          </main>
+        </div>
+      </ThemeProvider>
     </Router>
   );
 };

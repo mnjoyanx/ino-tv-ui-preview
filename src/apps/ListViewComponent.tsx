@@ -187,12 +187,12 @@ const ListViewComponent: FC = () => {
               itemHeight={27}
               isActive={true}
               buffer={5}
-              arrows={{ show: true }}
-              // edgeScroll={{
-              //   enabled: true,
-              //   interval: 800,
-              //   startDelay: 500,
-              // }}
+              // arrows={{ show: true }}
+              edgeScroll={{
+                enabled: true,
+                interval: 800,
+                startDelay: 500,
+              }}
               gap={1}
               // debounce={200}
               nativeControle={true}
