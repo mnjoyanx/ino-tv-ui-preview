@@ -99,7 +99,7 @@ const App = () => {
 
   return (
     <PageContentWrapper>
-      <PageIntroHeader title="ThemeProvider Component" />
+      <PageIntroHeader title="ThemeProvider API" />
 
       <Tabs defaultValue="preview">
         <TabsList>
