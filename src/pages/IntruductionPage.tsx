@@ -1,9 +1,11 @@
 import { useState } from "react";
 import logo from "/logo.png";
-import { InoButton } from "ino-ui-tv";
 
 const IntroductionPage = () => {
   const [activeTab, setActiveTab] = useState("npm");
+  const [email, setEmail] = useState("");
+  const [subscribeStatus, setSubscribeStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const commands = {
     npm: "npm install ino-tv-ui",
@@ -15,6 +17,36 @@ const IntroductionPage = () => {
   const handleCopy = () => {
     navigator.clipboard.writeText(commands[activeTab]);
     alert("Command copied to clipboard!");
+  };
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      setSubscribeStatus("Please enter an email address");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/api/subscribe", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubscribeStatus(data.message);
+        setEmail("");
+      } else {
+        setSubscribeStatus(data.message);
+      }
+    } catch (error) {
+      setSubscribeStatus("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -58,6 +90,42 @@ const IntroductionPage = () => {
           </button>
         </div>
       </div>
+      <p className="text-gray-600 text-center mb-6 mt-12">
+        Subscribe to receive updates and news about inoTV UI
+      </p>
+      <form
+        onSubmit={handleSubscribe}
+        className="max-w-md mx-auto"
+      >
+        <div className="flex gap-2">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
+            disabled={isLoading}
+          >
+            {isLoading ? "Subscribing..." : "Subscribe"}
+          </button>
+        </div>
+        {subscribeStatus && (
+          <p
+            className={`mt-2 text-center ${
+              subscribeStatus.includes("error")
+                ? "text-red-500"
+                : "text-green-500"
+            }`}
+          >
+            {subscribeStatus}
+          </p>
+        )}
+      </form>
     </div>
   );
 };

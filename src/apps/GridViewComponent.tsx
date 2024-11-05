@@ -199,8 +199,12 @@ const GridViewComponent: FC = () => {
               onUp={() => {}}
               onDown={() => {}}
               onLeft={() => {}}
-              onRight={() => {}}
-              onBack={() => {}}
+              onRight={() => {
+                alert("onRight");
+              }}
+              onBack={() => {
+                alert("onBack");
+              }}
               itemsTotal={items.length}
               rowItemsCount={3}
               rowCount={3}
@@ -209,6 +213,12 @@ const GridViewComponent: FC = () => {
               bufferStart={10}
               bufferEnd={10}
               nativeControle={true}
+              onOk={() => {
+                alert("onClick");
+              }}
+              onMouseEnter={() => {
+                alert("onMouseEnter");
+              }}
               renderItem={({ item, isActive, style }) => (
                 <div
                   key={item.id}

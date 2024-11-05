@@ -181,37 +181,41 @@ const ListViewComponent: FC = () => {
               id="example_list"
               uniqueKey="example-list"
               itemsTotal={movies.length}
-              itemsCount={2}
+              itemsCount={1}
               listType="horizontal"
-              itemWidth={24}
+              itemWidth={23}
               itemHeight={27}
               isActive={true}
               buffer={5}
-              debounce={200}
+              arrows={{ show: true }}
+              // edgeScroll={{
+              //   enabled: true,
+              //   interval: 800,
+              //   startDelay: 500,
+              // }}
+              gap={1}
+              // debounce={200}
               nativeControle={true}
-              renderItem={({ index, style, isActive, item }) => (
-                <div
-                  style={style}
-                  key={item.id + index}
-                  className={`${styles.item} ${isActive ? styles.active : ""}`}
-                >
-                  <div className="w-[90%] h-[90%]">
-                    {/* <img
-                      src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.image}`}
-                      alt={item.title}
-                      className="w-full h-auto mb-2 rounded"
-                      decoding="async"
-                      fetchPriority="high"
-                      // srcSet={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.image} 1x, https://image.tmdb.org/t/p/w1200_and_h1800_bestv2/${item.image} 2x`}
-                    /> */}
-                    <InoImage
-                      src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.image}`}
-                      alt={item.title}
-                    />
+              renderItem={({ index, style, isActive, item }) => {
+                console.log(item);
+                return (
+                  <div
+                    style={style}
+                    key={item.id + index}
+                    className={`${styles.item} ${
+                      isActive ? styles.active : ""
+                    }`}
+                  >
+                    <div className="">
+                      <InoImage
+                        src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.image}`}
+                        alt={item.title}
+                      />
+                    </div>
+                    <p>{item.title}</p>
                   </div>
-                  <p>{item.title}</p>
-                </div>
-              )}
+                );
+              }}
               data={movies}
               onBackScrollIndex={0}
             />

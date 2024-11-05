@@ -31,15 +31,7 @@ const App = () => {
 
             <Route
               path="/button"
-              element={
-                <ButtonPage
-                  ok="ok"
-                  test="test"
-                  lkasdv=";lkmsdv"
-                  lll="ds"
-                  vvsdn="vvsdn"
-                />
-              }
+              element={<ButtonPage />}
             />
 
             <Route
