@@ -11,6 +11,7 @@ import ButtonPage from "./pages/ButtonPage";
 import { Toaster } from "./components/ui/sonner";
 import { ThemeProvider } from "ino-ui-tv";
 import ThemeProviderPage from "./pages/ThemeProviderPage";
+import KeyboardPage from "./pages/KeyboardPage";
 
 const CheckboxPage = () => (
   <>
@@ -76,6 +77,10 @@ const App = () => {
               <Route
                 path="/theme"
                 element={<ThemeProviderPage />}
+              />
+              <Route
+                path="/keyboard"
+                element={<KeyboardPage />}
               />
             </Routes>
           </main>

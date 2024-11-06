@@ -86,6 +86,16 @@ const Sidebar = () => {
               GridView
             </Link>
           </li>
+          <li>
+            <Link
+              to="/keyboard"
+              className={`hover:text-primary block ${
+                isActive("/keyboard") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Keyboard
+            </Link>
+          </li>
         </ul>
       </div>
     </aside>
