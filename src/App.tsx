@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "ino-ui-tv/dist/styles/styles.css";
+
 import Checkbox from "./apps/Checkbox";
 import ListViewComponent from "./apps/ListViewComponent";
 import ModalComponent from "./apps/ModalComponent"; // Import the new Modal component
