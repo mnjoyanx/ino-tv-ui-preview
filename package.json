@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "postinstall": "cp -r node_modules/ino-ui-tv/dist/styles public/styles"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
