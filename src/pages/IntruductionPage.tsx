@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { InoKeyboard } from "ino-ui-tv";
 import logo from "/logo.png";
 
 const IntroductionPage = () => {
@@ -6,6 +7,7 @@ const IntroductionPage = () => {
   const [email, setEmail] = useState("");
   const [subscribeStatus, setSubscribeStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(true);
 
   const commands = {
     npm: "npm install ino-tv-ui",
@@ -54,6 +56,15 @@ const IntroductionPage = () => {
       <h1 className="text-3xl font-bold mb-6 text-center text-primary">
         Welcome to inoTV UI
       </h1>
+
+      <InoKeyboard
+        isOpen={isKeyboardOpen}
+        onClose={() => {
+          setIsKeyboardOpen(false);
+        }}
+        onChange={() => {}}
+        variant="netflix"
+      />
 
       <p className="text-lg text-gray-700 mb-4 text-center">
         inoTV UI is a library for building TV applications.
