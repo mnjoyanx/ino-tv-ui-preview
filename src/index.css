@@ -75,3 +75,15 @@ button:focus-visible {
   background-color: #1a1a1a !important;
   color: #fff !important;
 }
+
+.ino-button {
+  padding: 1rem !important;
+}
+
+.ino-keyboard-row .ino-keyboard-key {
+  border: 1px solid transparent !important;
+}
+
+.ino-keyboard-row .ino-keyboard-key.ino-button--active {
+  border-color: #fff !important;
+}
