@@ -76,10 +76,6 @@ button:focus-visible {
   color: #fff !important;
 }
 
-.ino-button {
-  padding: 1rem !important;
-}
-
 .ino-keyboard-row .ino-keyboard-key {
   border: 1px solid transparent !important;
 }
