@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "/logo.png";
+import { CheckboxItem, InoButton, InoCol } from "ino-ui-tv";
 
 const IntroductionPage = () => {
   const [activeTab, setActiveTab] = useState("npm");
@@ -55,14 +56,48 @@ const IntroductionPage = () => {
         Welcome to inoTV UI
       </h1>
 
-      {/* <InoKeyboard
-        isOpen={isKeyboardOpen}
-        onClose={() => {
-          setIsKeyboardOpen(false);
-        }}
-        onChange={() => {}}
-        variant="netflix"
-      /> */}
+      <div className="w-1/2">
+        <InoCol
+          isActive={true}
+          onActiveChange={(index) => console.log(`Active changed to ${index}`)}
+        >
+          <p className="text">asdvasdv</p>
+          <InoButton
+            index={1}
+            isActive={true}
+          >
+            Button 2
+          </InoButton>
+          <InoButton
+            index={2}
+            isActive={true}
+          >
+            Button 3
+          </InoButton>
+          <CheckboxItem
+            label="Checkbox 1"
+            isActive={true}
+          />
+        </InoCol>
+      </div>
+      {/* 
+      <InoCol
+        isActive={true}
+        infinite={true}
+      >
+        <InoButton index={0}>Button 1</InoButton>
+        <InoButton index={1}>Button 2</InoButton>
+        <InoButton index={2}>Button 3</InoButton>
+      </InoCol> */}
+
+      {/* <InoTabs onChange={(index) => console.log(`Tab ${index} selected`)}>
+        <InoTab label="Tab 1" />
+        <InoTab label="Tab 2" />
+        <InoTab
+          label="Tab 3"
+          disabled
+        />
+      </InoTabs> */}
 
       <p className="text-lg text-gray-700 mb-4 text-center">
         inoTV UI is a library for building TV applications.

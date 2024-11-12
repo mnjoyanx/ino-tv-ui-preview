@@ -68,6 +68,16 @@ const Sidebar = () => {
           </li>
           <li>
             <Link
+              to="/scrollview"
+              className={`hover:text-primary block ${
+                isActive("/scrollview") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              ScrollView
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/listview"
               className={`hover:text-primary block ${
                 isActive("/listview") ? "text-primary font-semibold" : ""
@@ -94,6 +104,56 @@ const Sidebar = () => {
               }`}
             >
               Keyboard
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/input"
+              className={`hover:text-primary block ${
+                isActive("/input") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Input
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/row"
+              className={`hover:text-primary block ${
+                isActive("/row") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Row
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/col"
+              className={`hover:text-primary block ${
+                isActive("/col") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Column
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/layout-demo"
+              className={`hover:text-primary block ${
+                isActive("/layout-demo") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Layout Demo
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/tabs"
+              className={`hover:text-primary block ${
+                isActive("/tabs") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Tabs
             </Link>
           </li>
         </ul>

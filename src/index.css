@@ -67,9 +67,9 @@ button:focus-visible {
   }
 } */
 
-.active {
+/* .active {
   background: #6d717b !important;
-}
+} */
 
 .toast {
   background-color: #1a1a1a !important;
@@ -82,4 +82,16 @@ button:focus-visible {
 
 .ino-keyboard-row .ino-keyboard-key.ino-button--active {
   border-color: #fff !important;
+}
+
+/* .ino-button--active {
+  background: #6d717b !important;
+} */
+
+.ino-element-wrapper.active button {
+  box-shadow: 0 0 0 2px #0f87b2 !important;
+}
+
+.ino-tab--active:not(.ino-tab--disabled, .ino-tab--selected) {
+  color: #fb923c !important;
 }

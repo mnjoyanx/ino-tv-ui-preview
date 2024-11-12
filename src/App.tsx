@@ -12,6 +12,12 @@ import { Toaster } from "./components/ui/sonner";
 import { ThemeProvider } from "ino-ui-tv";
 import ThemeProviderPage from "./pages/ThemeProviderPage";
 import KeyboardPage from "./pages/KeyboardPage";
+import ScrollViewPage from "./pages/ScrollViewPage";
+import InputPage from "./pages/InputPage";
+import RowPage from "./pages/RowPage";
+import ColPage from "./pages/ColPage";
+import LayoutDemoPage from "./pages/LayoutDemoPage";
+import TabsPage from "./pages/TabsPage";
 
 const CheckboxPage = () => (
   <>
@@ -67,6 +73,10 @@ const App = () => {
                 element={<CheckboxPage />}
               />
               <Route
+                path="/scrollview"
+                element={<ScrollViewPage />}
+              />
+              <Route
                 path="/listview"
                 element={<ListViewComponent />}
               />
@@ -81,6 +91,26 @@ const App = () => {
               <Route
                 path="/keyboard"
                 element={<KeyboardPage />}
+              />
+              <Route
+                path="/input"
+                element={<InputPage />}
+              />
+              <Route
+                path="/row"
+                element={<RowPage />}
+              />
+              <Route
+                path="/col"
+                element={<ColPage />}
+              />
+              <Route
+                path="/layout-demo"
+                element={<LayoutDemoPage />}
+              />
+              <Route
+                path="/tabs"
+                element={<TabsPage />}
               />
             </Routes>
           </main>

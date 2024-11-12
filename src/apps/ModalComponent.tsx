@@ -16,9 +16,13 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const ModalComponent: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
+
+  const handleSecondModalOpen = () => setIsSecondModalOpen(true);
+  const handleSecondModalClose = () => setIsSecondModalOpen(false);
 
   const propsData = [
     {
@@ -57,18 +61,34 @@ const ModalComponent: FC = () => {
   import { Modal } from "ino-ui-tv";
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
+  
+  const handleSecondModalOpen = () => setIsSecondModalOpen(true);
+  const handleSecondModalClose = () => setIsSecondModalOpen(false);
 
   <Modal
     isOpen={isOpen}
     onClose={handleClose}
-    title="Example Modal"
-    children={<p className="p-4 text-gray-700">This is the modal content.</p>}
+    title="First Modal"
+    okBtnText="Open Second Modal"
+    cancelBtnText="Cancel"
+    onOk={handleSecondModalOpen}
+  >
+    <p className="p-4 text-gray-700">This is the first modal content.</p>
+  </Modal>
+
+  <Modal
+    isOpen={isSecondModalOpen}
+    onClose={handleSecondModalClose}
+    title="Second Modal"
     okBtnText="OK"
     cancelBtnText="Cancel"
-  />`;
+  >
+    <p className="p-4 text-gray-700">This is the second modal content.</p>
+  </Modal>`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(codeString).then(() => {
@@ -102,14 +122,28 @@ const ModalComponent: FC = () => {
             <Modal
               isOpen={isOpen}
               onClose={handleClose}
-              title="Example Modal"
-              children={
-                <p className="p-4 text-gray-700">This is the modal content.</p>
-              }
+              title="First Modal"
+              okBtnText="Open Second Modal"
+              cancelBtnText="Cancel"
+              onOk={handleSecondModalOpen}
+            >
+              <p className="p-4 text-gray-700">
+                This is the first modal content.
+              </p>
+            </Modal>
+            <Modal
+              isOpen={isSecondModalOpen}
+              onClose={handleSecondModalClose}
+              title="Second Modal"
               okBtnText="OK"
               cancelBtnText="Cancel"
-              closeOnOverlayClick={true}
-            />
+              showCloseIcon={false}
+              size="full"
+            >
+              <p className="p-4 text-gray-700">
+                This is the second modal content.
+              </p>
+            </Modal>
           </div>
         </TabsContent>
 
