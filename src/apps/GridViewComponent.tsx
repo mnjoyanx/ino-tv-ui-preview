@@ -199,13 +199,8 @@ const GridViewComponent: FC = () => {
               onUp={() => {}}
               onDown={() => {}}
               onLeft={() => {}}
-              onRight={() => {
-                alert("onRight");
-              }}
-              onBack={() => {
-                alert("onBack");
-              }}
-              itemsTotal={items.length}
+              onRight={() => {}}
+              onBack={() => {}}
               rowItemsCount={3}
               rowCount={3}
               itemWidth={23}
