@@ -1,6 +1,5 @@
 import { useState } from "react";
 import logo from "/logo.png";
-import { CheckboxItem, InoButton, InoCol } from "ino-ui-tv";
 
 const IntroductionPage = () => {
   const [activeTab, setActiveTab] = useState("npm");
