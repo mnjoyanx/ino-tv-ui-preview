@@ -212,7 +212,7 @@ const GridViewComponent: FC = () => {
                 alert("onClick");
               }}
               onMouseEnter={() => {
-                alert("onMouseEnter");
+                // alert("onMouseEnter");
               }}
               renderItem={({ item, isActive, style }) => (
                 <div

@@ -195,8 +195,8 @@ const MyComponent = () => {
                     onChange={setInputValue1}
                     placeholder="Input without cursor..."
                     showCursor={false}
-                    isActive={activeInput === 1}
-                    onOk={() => toast("OK pressed")}
+                    isActive={activeInput === 1 && !isKeyboardOpen}
+                    onOk={() => setIsKeyboardOpen(true)}
                     onDown={() => setActiveInput(2)}
                   />
                 </div>
@@ -214,8 +214,8 @@ const MyComponent = () => {
                     onChange={setInputValue2}
                     placeholder="Input with cursor..."
                     showCursor={activeInput === 2}
-                    isActive={activeInput === 2}
-                    onOk={() => toast("OK pressed")}
+                    isActive={activeInput === 2 && !isKeyboardOpen}
+                    onOk={() => setIsKeyboardOpen(true)}
                     onUp={() => setActiveInput(1)}
                     onDown={() => setActiveInput(3)}
                   />
@@ -231,7 +231,6 @@ const MyComponent = () => {
                 <div className="max-w-md">
                   <InoInput
                     value={keyboardInputValue}
-                    onChange={setKeyboardInputValue}
                     placeholder="Press OK to open keyboard..."
                     showCursor={activeInput === 3}
                     isActive={activeInput === 3}
@@ -244,7 +243,21 @@ const MyComponent = () => {
                     <InoKeyboard
                       isOpen={isKeyboardOpen}
                       onClose={() => setIsKeyboardOpen(false)}
-                      onChange={(value) => setKeyboardInputValue(value)}
+                      onChange={(value) => {
+                        switch (activeInput) {
+                          case 1:
+                            setInputValue1((val) => val + value);
+                            break;
+                          case 2:
+                            setInputValue2((val) => val + value);
+                            break;
+                          case 3:
+                            setKeyboardInputValue((val) => val + value);
+                            break;
+                          default:
+                            break;
+                        }
+                      }}
                       variant="default"
                       infinite={true}
                     />

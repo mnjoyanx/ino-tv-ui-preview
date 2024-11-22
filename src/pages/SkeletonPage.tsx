@@ -1,7 +1,7 @@
 import React from "react";
 import PageIntroHeader from "@/components/common/PageIntroHeader";
 import PageContentWrapper from "@/components/common/PageContentWrapper";
-import { InoTabs, InoTab, InoButton, InoCol } from "ino-ui-tv";
+import { InoSkeleton, InoSkeletonListItem } from "ino-ui-tv";
 import {
   Table,
   TableBody,
@@ -17,88 +17,108 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { toast } from "sonner";
 
-const TabsPage: React.FC = () => {
+const SkeletonPage: React.FC = () => {
   const propsData = [
     {
-      name: "`selectedIndex`",
+      name: "`variant`",
+      type: "'text' | 'rectangular' | 'circular'",
+      description: "Type of skeleton to display",
+      required: false,
+      defaultValue: "'rectangular'",
+    },
+    {
+      name: "`width`",
+      type: "number | string",
+      description: "Width of the skeleton (in rem if number)",
+      required: false,
+      defaultValue: "100%",
+    },
+    {
+      name: "`height`",
+      type: "number | string",
+      description: "Height of the skeleton (in rem if number)",
+      required: false,
+      defaultValue: "1.2rem",
+    },
+    {
+      name: "`animation`",
+      type: "'pulse' | 'wave' | 'none'",
+      description: "Animation type",
+      required: false,
+      defaultValue: "'pulse'",
+    },
+    {
+      name: "`borderRadius`",
       type: "number",
-      description: "Index of the currently selected tab",
+      description: "Border radius in rem",
       required: false,
-      defaultValue: "0",
+      defaultValue: "0.25",
     },
     {
-      name: "`infinite`",
-      type: "boolean",
-      description: "Enable infinite scrolling through tabs",
+      name: "`textVariant`",
+      type: "'heading' | 'subheading' | 'body'",
+      description: "Predefined text sizes when variant is 'text'",
       required: false,
-      defaultValue: "false",
-    },
-    {
-      name: "`changeByOnOk`",
-      type: "boolean",
-      description: "Change tabs only when OK/Enter is pressed",
-      required: false,
-      defaultValue: "false",
-    },
-    {
-      name: "`onChange`",
-      type: "(index: number) => void",
-      description: "Callback when active tab changes",
-      required: false,
-      defaultValue: "undefined",
+      defaultValue: "'body'",
     },
   ];
 
-  const tabPropsData = [
+  const listItemPropsData = [
     {
-      name: "`label`",
-      type: "string",
-      description: "Text label for the tab",
-      required: true,
-      defaultValue: "undefined",
-    },
-    {
-      name: "`children`",
-      type: "React.ReactNode",
-      description: "Content to be displayed inside the tab",
-      required: true,
-      defaultValue: "undefined",
-    },
-    {
-      name: "`disabled`",
-      type: "boolean",
-      description: "Whether the tab is disabled",
+      name: "`avatarSize`",
+      type: "number",
+      description: "Size of the avatar circle in rem",
       required: false,
-      defaultValue: "false",
+      defaultValue: "4",
+    },
+    {
+      name: "`lines`",
+      type: "number",
+      description: "Number of text lines to show",
+      required: false,
+      defaultValue: "1",
     },
   ];
 
-  const codeString = `import { InoTabs, InoTab, InoButton, InoCol } from "ino-ui-tv";
+  const codeString = `import { InoSkeleton, InoSkeletonListItem } from "ino-ui-tv";
 
 const MyComponent = () => {
   return (
-    <InoTabs
-      selectedIndex={0}
-      changeByOnOk
-      infinite
-    >
-      <InoTab label="Tab 1">
-        <h2>Content for Tab 1</h2>
-        <p>This is the content of the first tab</p>
-      </InoTab>
-      <InoTab label="Tab 2">
-        <div>
-          <h2>Content for Tab 2</h2>
-          <InoButton>A button in tab 2</InoButton>
-        </div>
-      </InoTab>
-      <InoTab label="Tab 3">
-        <InoCol isActive>
-          <InoButton>Button 1</InoButton>
-          <InoButton>Button 2</InoButton>
-        </InoCol>
-      </InoTab>
-    </InoTabs>
+    <div className="space-y-4">
+      {/* Basic rectangular skeleton */}
+      <InoSkeleton 
+        width={15} 
+        height={3} 
+        animation="pulse"
+      />
+
+      {/* Text skeleton */}
+      <InoSkeleton
+        variant="text"
+        width="80%"
+        textVariant="subheading"
+      />
+
+      {/* Circular skeleton for avatars */}
+      <InoSkeleton
+        variant="circular"
+        width={5}
+        height={5}
+      />
+
+      {/* List item with avatar */}
+      <InoSkeletonListItem
+        avatarSize={6}
+        lines={2}
+      />
+
+      {/* Multiple list items */}
+      <div className="space-y-4">
+        <InoSkeletonListItem />
+        <InoSkeletonListItem />
+        <InoSkeletonListItem />
+      </div>
+    </div>
   );
 };`;
 
@@ -109,7 +129,7 @@ const MyComponent = () => {
 
   return (
     <PageContentWrapper>
-      <PageIntroHeader title="Tabs Component" />
+      <PageIntroHeader title="Skeleton Components" />
 
       <Tabs defaultValue="preview">
         <TabsList>
@@ -120,40 +140,60 @@ const MyComponent = () => {
 
         <TabsContent value="preview">
           <div className="space-y-8 p-4 bg-amber-100 rounded-lg">
-            <p className="text-sm text-gray-600 mb-4">
-              Use ←→ keys to navigate between tabs, press OK/Enter to change tab
-              content
-            </p>
+            <div className="space-y-8">
+              {/* Basic Skeletons */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Basic Skeletons</h3>
+                <div className="space-y-4">
+                  {/* <InoSkeleton
+                    width={15}
+                    height={3}
+                    animation="pulse"
+                  /> */}
+                  <InoSkeleton
+                    variant="text"
+                    width={10}
+                    height={3}
+                    textVariant="subheading"
+                  />
+                  {/* <InoSkeleton
+                    variant="circular"
+                    width={5}
+                    height={5}
+                  /> */}
+                </div>
+              </div>
 
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Basic Tabs</h3>
-              <InoTabs
-                selectedIndex={0}
-                infinite
-                size="small"
-                isActive={false}
-              >
-                <InoTab label="Tab 1">
-                  <h2 className="text-lg font-semibold text-black">
-                    Content for Tab 1
-                  </h2>
-                  <p className="text-black">
-                    This is the content of the first tab
-                  </p>
-                </InoTab>
-                <InoTab label="Tab 2">
-                  <div>
-                    <h2>Content for Tab 2</h2>
-                    <InoButton>A button in tab 2</InoButton>
-                  </div>
-                </InoTab>
-                <InoTab label="Tab 3">
-                  <InoCol isActive>
-                    <InoButton>Button 1</InoButton>
-                    <InoButton>Button 2</InoButton>
-                  </InoCol>
-                </InoTab>
-              </InoTabs>
+              {/* List Items */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">List Items</h3>
+                <div className="space-y-4">
+                  <InoSkeletonListItem />
+                  <InoSkeletonListItem
+                    avatarSize={6}
+                    lines={4}
+                  />
+                  {/* <div className="space-y-4">
+                    <InoSkeletonListItem />
+                    <InoSkeletonListItem />
+                    <InoSkeletonListItem />
+                  </div> */}
+                </div>
+              </div>
+
+              {/* Custom Styling */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Custom Styling</h3>
+                <div className="space-y-4">
+                  <InoSkeleton
+                    width={15}
+                    height={3}
+                    borderRadius={0.8}
+                    className="custom-skeleton"
+                    style={{ margin: "1rem 0" }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </TabsContent>
@@ -178,7 +218,7 @@ const MyComponent = () => {
         <TabsContent value="props">
           <div className="space-y-8">
             <Table>
-              <TableCaption>InoTabs Component Props</TableCaption>
+              <TableCaption>InoSkeleton Component Props</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead className="bg-blue-200 font-semibold text-gray-700">
@@ -221,7 +261,7 @@ const MyComponent = () => {
             </Table>
 
             <Table>
-              <TableCaption>InoTab Component Props</TableCaption>
+              <TableCaption>InoSkeletonListItem Component Props</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead className="bg-blue-200 font-semibold text-gray-700">
@@ -242,7 +282,7 @@ const MyComponent = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {tabPropsData.map((prop) => (
+                {listItemPropsData.map((prop) => (
                   <TableRow
                     key={prop.name}
                     className="hover:bg-gray-50"
@@ -269,4 +309,4 @@ const MyComponent = () => {
   );
 };
 
-export default TabsPage;
+export default SkeletonPage;

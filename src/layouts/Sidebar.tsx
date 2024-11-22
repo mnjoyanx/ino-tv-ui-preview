@@ -156,6 +156,86 @@ const Sidebar = () => {
               Tabs
             </Link>
           </li>
+          <li>
+            <Link
+              to="/skeleton"
+              className={`hover:text-primary block ${
+                isActive("/skeleton") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Skeleton
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/list-item"
+              className={`hover:text-primary block ${
+                isActive("/list-item") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              ListItem
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/sidebar"
+              className={`hover:text-primary block ${
+                isActive("/sidebar") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Sidebar
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/text"
+              className={`hover:text-primary block ${
+                isActive("/text") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Text
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/toast"
+              className={`hover:text-primary block ${
+                isActive("/toast") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Toast
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/protect-input"
+              className={`hover:text-primary block ${
+                isActive("/protect-input") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Protect Input
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/progress"
+              className={`hover:text-primary block ${
+                isActive("/player-progress") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Progress
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/recycle-list"
+              className={`hover:text-primary block ${
+                isActive("/recycle-list") ? "text-primary font-semibold" : ""
+              }`}
+            >
+              Recycle List
+            </Link>
+          </li>
         </ul>
       </div>
     </aside>

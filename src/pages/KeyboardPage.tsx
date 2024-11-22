@@ -12,17 +12,61 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Copy } from "lucide-react";
+import {
+  ArrowBigUp,
+  ArrowRight,
+  ArrowLeft,
+  Copy,
+  Delete,
+  Space,
+} from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { EnterIcon } from "@radix-ui/react-icons";
 
 const KeyboardPage: React.FC = () => {
-  const [isDefaultKeyboardOpen] = useState(true);
-  const [isNetflixKeyboardOpen] = useState(true);
-  const [isCustomKeyboardOpen] = useState(true);
+  const [activeKeyboard, setActiveKeyboard] = useState<
+    "default" | "netflix" | "numeric" | "custom"
+  >("default");
   const [defaultInputValue, setDefaultInputValue] = useState("");
   const [netflixInputValue, setNetflixInputValue] = useState("");
+  const [numericInputValue, setNumericInputValue] = useState("");
   const [customInputValue, setCustomInputValue] = useState("");
+
+  // Keyboard visibility states
+  const [isDefaultKeyboardOpen, setIsDefaultKeyboardOpen] = useState(true);
+  const [isNetflixKeyboardOpen, setIsNetflixKeyboardOpen] = useState(true);
+  const [isNumericKeyboardOpen, setIsNumericKeyboardOpen] = useState(true);
+  const [isCustomKeyboardOpen, setIsCustomKeyboardOpen] = useState(true);
+
+  // Handle keyboard navigation
+  const handleKeyboardUp = () => {
+    switch (activeKeyboard) {
+      case "netflix":
+        setActiveKeyboard("default");
+        break;
+      case "numeric":
+        setActiveKeyboard("netflix");
+        break;
+      case "custom":
+        setActiveKeyboard("numeric");
+        break;
+    }
+  };
+
+  const handleKeyboardDown = () => {
+    switch (activeKeyboard) {
+      case "default":
+        setActiveKeyboard("netflix");
+        break;
+      case "netflix":
+        setActiveKeyboard("numeric");
+        break;
+      case "numeric":
+        setActiveKeyboard("custom");
+        break;
+    }
+  };
 
   const propsData = [
     {
@@ -104,27 +148,62 @@ const MyComponent = () => {
       { label: "c", value: "c" },
       { label: "d", value: "d" },
     ],
-    // [
-    //   {
-    //     label: (
-    //       <svg
-    //         viewBox="0 0 24 24"
-    //         fill="none"
-    //         width={24}
-    //         height={24}
-    //       >
-    //         <path
-    //           d="M8 17V12H5.6302C4.71068 12 4.27858 10.8635 4.96584 10.2526L10.6713 5.18109C11.429 4.50752 12.571 4.50752 13.3287 5.18109L19.0342 10.2526C19.7214 10.8635 19.2893 12 18.3698 12H16V17C16 18.1046 15.1046 19 14 19H10C8.89543 19 8 18.1046 8 17Z"
-    //           stroke="#fff"
-    //           strokeWidth="2"
-    //           strokeLinecap="round"
-    //           strokeLinejoin="round"
-    //         />
-    //       </svg>
-    //     ),
-    //     value: "shift",
-    //   },
-    // ],
+  ];
+
+  const customLayout2 = [
+    [
+      { label: "1", value: "1" },
+      { label: "2", value: "2" },
+      { label: "3", value: "3" },
+      { label: "4", value: "4" },
+      { label: "5", value: "5" },
+      { label: "6", value: "6" },
+      { label: "7", value: "7" },
+      { label: "8", value: "8" },
+      { label: "9", value: "9" },
+    ],
+    [
+      { label: "a", value: "a" },
+      { label: "b", value: "b" },
+      { label: "c", value: "c" },
+      { label: "d", value: "d" },
+      { label: "e", value: "e" },
+      { label: "f", value: "f" },
+      { label: "g", value: "g" },
+      { label: "h", value: "h" },
+      { label: "i", value: "i" },
+    ],
+    [
+      { label: "j", value: "j" },
+      { label: "k", value: "k" },
+      { label: "l", value: "l" },
+      { label: "m", value: "m" },
+      { label: "n", value: "n" },
+      { label: "o", value: "o" },
+      { label: "p", value: "p" },
+      { label: "q", value: "q" },
+      { label: "r", value: "r" },
+    ],
+    [
+      { label: "s", value: "s" },
+      { label: "t", value: "t" },
+      { label: "u", value: "u" },
+      { label: "v", value: "v" },
+      { label: "w", value: "w" },
+      { label: "x", value: "x" },
+      { label: "y", value: "y" },
+      { label: "z", value: "z" },
+      { label: ".", value: "." },
+    ],
+    [
+      { label: <ArrowBigUp />, value: "shift" },
+      { label: "space", value: "space" },
+      { label: <Delete />, value: "backspace" },
+      { label: <EnterIcon />, value: "enter" },
+      { label: "clear", value: "clear" },
+      { label: <ArrowLeft />, value: "left" },
+      { label: <ArrowRight />, value: "right" },
+    ],
   ];
 
   return (
@@ -143,18 +222,18 @@ const MyComponent = () => {
             {/* Default Keyboard */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Default Keyboard</h3>
-              {defaultInputValue && (
-                <div className="flex items-center">
-                  <span>Current Value: {defaultInputValue}</span>
-                </div>
-              )}
+              <p className="text-sm text-gray-600">
+                Current Value: {defaultInputValue}
+              </p>
               <div className="h-[45vh] relative">
                 <InoKeyboard
                   isOpen={isDefaultKeyboardOpen}
                   onClose={() => {}}
-                  onChange={(value) => setDefaultInputValue(value)}
+                  onChange={setDefaultInputValue}
                   variant="default"
                   infinite={true}
+                  isActive={activeKeyboard === "default"}
+                  onDown={handleKeyboardDown}
                 />
               </div>
             </div>
@@ -162,17 +241,37 @@ const MyComponent = () => {
             {/* Netflix Keyboard */}
             <div className="space-y-4 mt-8">
               <h3 className="text-lg font-semibold">Netflix Keyboard</h3>
-              {netflixInputValue && (
-                <div className="flex items-center">
-                  <span>Current Value: {netflixInputValue}</span>
-                </div>
-              )}
-              <div className="h-[55vh] relative overflow-hidden rounded-lg">
+              <p className="text-sm text-gray-600">
+                Current Value: {netflixInputValue}
+              </p>
+              <div className="h-[45vh] relative">
                 <InoKeyboard
                   isOpen={isNetflixKeyboardOpen}
                   onClose={() => {}}
-                  onChange={(value) => setNetflixInputValue(value)}
+                  onChange={setNetflixInputValue}
                   variant="netflix"
+                  isActive={activeKeyboard === "netflix"}
+                  onUp={handleKeyboardUp}
+                  onDown={handleKeyboardDown}
+                />
+              </div>
+            </div>
+
+            {/* Numeric Keyboard */}
+            <div className="space-y-4 mt-8">
+              <h3 className="text-lg font-semibold">Numeric Keyboard</h3>
+              <p className="text-sm text-gray-600">
+                Current Value: {numericInputValue}
+              </p>
+              <div className="h-[45vh] relative">
+                <InoKeyboard
+                  isOpen={isNumericKeyboardOpen}
+                  onClose={() => {}}
+                  onChange={setNumericInputValue}
+                  variant="numeric"
+                  isActive={activeKeyboard === "numeric"}
+                  onUp={handleKeyboardUp}
+                  onDown={handleKeyboardDown}
                 />
               </div>
             </div>
@@ -180,17 +279,17 @@ const MyComponent = () => {
             {/* Custom Keyboard */}
             <div className="space-y-4 mt-8">
               <h3 className="text-lg font-semibold">Custom Keyboard</h3>
-              {customInputValue && (
-                <div className="flex items-center">
-                  <span>Current Value: {customInputValue}</span>
-                </div>
-              )}
-              <div className="h-[28vh] relative">
+              <p className="text-sm text-gray-600">
+                Current Value: {customInputValue}
+              </p>
+              <div className="h-[45vh] relative">
                 <InoKeyboard
                   isOpen={isCustomKeyboardOpen}
                   onClose={() => {}}
-                  onChange={(value) => setCustomInputValue(value)}
-                  customLayout={customLayout}
+                  onChange={setCustomInputValue}
+                  customLayout={customLayout2}
+                  isActive={activeKeyboard === "custom"}
+                  onUp={handleKeyboardUp}
                 />
               </div>
             </div>

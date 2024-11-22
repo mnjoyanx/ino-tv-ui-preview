@@ -95,3 +95,109 @@ button:focus-visible {
 .ino-tab--active:not(.ino-tab--disabled, .ino-tab--selected) {
   color: #fb923c !important;
 }
+
+.ino-sidebar-item.active {
+  background-color: #fb923c !important;
+}
+
+.ino-element-wrapper.active .ino-list-item {
+  color: #fb923c !important;
+}
+
+.ino-tab-panels {
+  background-color: transparent !important;
+}
+
+.ino-sidebar-item {
+  border: 1px solid transparent;
+}
+
+.ino-sidebar-item.active {
+  border-color: #fff !important;
+  background-color: transparent !important;
+}
+
+.ino-sidebar-item.selected {
+  background-color: #fb923c !important;
+  color: #fff !important;
+}
+
+/* .ino-sidebar.collapsed .ino-sidebar-item {
+  justify-content: flex-end !important;
+} */
+
+.ino-sidebar--left.collapsed .ino-sidebar-item {
+  margin-left: 0 !important;
+  justify-content: flex-end !important;
+}
+
+:root {
+  --ino-color-error: #ef4444;
+  --ino-color-success: #22c55e !important;
+  --ino-text-primary: #0f87b2 !important;
+  /* --ino-text-secondary: #6d717b !important; */
+  --ino-bg-primary: #1a1a1a !important;
+  --ino-bg-danger: #ef4444 !important;
+  --ino-bg-success: #22c55e !important;
+  --ino-bg-warning: #fb923c !important;
+  --ino-bg-info: #0f87b2 !important;
+  --ino-bg-secondary: #6d717b !important;
+}
+
+.ino-skeleton {
+  background-color: #6d717b !important;
+}
+
+.ino-skeleton {
+  background-color: var(--ino-skeleton-bg, #e0e0e0);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pulse Animation */
+.ino-skeleton--animation-pulse {
+  animation: ino-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ino-skeleton-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Wave Animation */
+.ino-skeleton--animation-wave::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: ino-skeleton-wave 1.6s linear 0.5s infinite;
+}
+
+@keyframes ino-skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.ino-toast {
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+}

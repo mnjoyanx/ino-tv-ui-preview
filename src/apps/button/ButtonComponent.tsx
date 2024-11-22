@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { InoButton } from "ino-ui-tv";
-import { toast } from "sonner";
+import { toast } from "ino-ui-tv";
 
 const ButtonComponent: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -11,11 +11,7 @@ const ButtonComponent: React.FC = () => {
       title: "Primary Button",
       variant: "primary",
       onClick: (_e: any, index: number) => {
-        toast(
-          `Button ${index} clicked, Event name: ${(_e as any).e.type}, Key: ${
-            (_e as any).e.key || ""
-          }`
-        );
+        toast.success(`Button ${index} clicked, Event name: ${_e.type}`);
       },
       onRight: () => setActiveIndex(1),
     },
@@ -24,11 +20,7 @@ const ButtonComponent: React.FC = () => {
       title: "Secondary Button",
       variant: "secondary",
       onClick: (_e: any, index: number) => {
-        toast(
-          `Button ${index} clicked, Event name: ${(_e as any).e.type}, Key: ${
-            (_e as any).e.key || ""
-          }`
-        );
+        toast.success(`Button ${index} clicked, Event name: ${_e.type}`);
       },
       onLeft: () => setActiveIndex(0),
       onRight: () => setActiveIndex(2),
@@ -38,11 +30,7 @@ const ButtonComponent: React.FC = () => {
       title: "Danger Button",
       variant: "danger",
       onClick: (_e: any, index: number) => {
-        toast(
-          `Button ${index} clicked, Event name: ${(_e as any).e.type}, Key: ${
-            (_e as any).e.key || ""
-          }`
-        );
+        toast.success(`Button ${index} clicked, Event name: ${_e.type}`);
       },
       onLeft: () => setActiveIndex(1),
       onRight: () => setActiveIndex(3),
@@ -53,11 +41,7 @@ const ButtonComponent: React.FC = () => {
       variant: "outline",
       onLeft: () => setActiveIndex(2),
       onClick: (_e: any, index: number) => {
-        toast(
-          `Button ${index} clicked, Event name: ${(_e as any).e.type}, Key: ${
-            (_e as any).e.key || ""
-          }`
-        );
+        toast.success(`Button ${index} clicked, Event name: ${_e.type}`);
       },
     },
   ];
