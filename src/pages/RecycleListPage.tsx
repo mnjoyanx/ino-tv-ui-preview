@@ -84,8 +84,12 @@ const RecycleListPage: React.FC = () => {
                   isActive={true}
                   infinite={true}
                   onDown={() => setActiveList(2)}
-                  renderItem={(item) => (
-                    <div className="px-4 border-b hover:bg-gray-100">
+                  renderItem={(item, _index, isActive) => (
+                    <div
+                      className={`px-4 border-b hover:bg-gray-100 ${
+                        isActive ? "bg-primary" : ""
+                      }`}
+                    >
                       <h4 className="font-medium">{item.title}</h4>
                       <p className="text-sm text-gray-600">
                         {item.description}
