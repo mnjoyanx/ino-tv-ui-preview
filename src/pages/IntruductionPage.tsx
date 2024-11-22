@@ -1,6 +1,5 @@
 import { useState } from "react";
 import logo from "/logo.png";
-import { HomeIcon, SettingsIcon, UserIcon } from "lucide-react";
 import { toast } from "ino-ui-tv";
 
 const IntroductionPage = () => {

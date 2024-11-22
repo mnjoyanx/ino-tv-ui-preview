@@ -131,7 +131,6 @@ const MyComponent = () => {
                 selectedIndex={0}
                 infinite
                 size="small"
-                isActive={false}
               >
                 <InoTab label="Tab 1">
                   <h2 className="text-lg font-semibold text-black">

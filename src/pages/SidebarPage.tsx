@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PageIntroHeader from "@/components/common/PageIntroHeader";
 import PageContentWrapper from "@/components/common/PageContentWrapper";
-import { InoSidebar, InoButton } from "ino-ui-tv";
+import { InoSidebar } from "ino-ui-tv";
 import {
   Table,
   TableBody,

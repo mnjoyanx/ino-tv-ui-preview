@@ -12,61 +12,22 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import {
-  ArrowBigUp,
-  ArrowRight,
-  ArrowLeft,
-  Copy,
-  Delete,
-  Space,
-} from "lucide-react";
+import { ArrowBigUp, ArrowRight, ArrowLeft, Copy, Delete } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { EnterIcon } from "@radix-ui/react-icons";
 
 const KeyboardPage: React.FC = () => {
-  const [activeKeyboard, setActiveKeyboard] = useState<
-    "default" | "netflix" | "numeric" | "custom"
-  >("default");
   const [defaultInputValue, setDefaultInputValue] = useState("");
   const [netflixInputValue, setNetflixInputValue] = useState("");
   const [numericInputValue, setNumericInputValue] = useState("");
   const [customInputValue, setCustomInputValue] = useState("");
 
   // Keyboard visibility states
-  const [isDefaultKeyboardOpen, setIsDefaultKeyboardOpen] = useState(true);
-  const [isNetflixKeyboardOpen, setIsNetflixKeyboardOpen] = useState(true);
-  const [isNumericKeyboardOpen, setIsNumericKeyboardOpen] = useState(true);
-  const [isCustomKeyboardOpen, setIsCustomKeyboardOpen] = useState(true);
-
-  // Handle keyboard navigation
-  const handleKeyboardUp = () => {
-    switch (activeKeyboard) {
-      case "netflix":
-        setActiveKeyboard("default");
-        break;
-      case "numeric":
-        setActiveKeyboard("netflix");
-        break;
-      case "custom":
-        setActiveKeyboard("numeric");
-        break;
-    }
-  };
-
-  const handleKeyboardDown = () => {
-    switch (activeKeyboard) {
-      case "default":
-        setActiveKeyboard("netflix");
-        break;
-      case "netflix":
-        setActiveKeyboard("numeric");
-        break;
-      case "numeric":
-        setActiveKeyboard("custom");
-        break;
-    }
-  };
+  const [isDefaultKeyboardOpen] = useState(true);
+  const [isNetflixKeyboardOpen] = useState(true);
+  const [isNumericKeyboardOpen] = useState(true);
+  const [isCustomKeyboardOpen] = useState(true);
 
   const propsData = [
     {
@@ -232,8 +193,6 @@ const MyComponent = () => {
                   onChange={setDefaultInputValue}
                   variant="default"
                   infinite={true}
-                  isActive={activeKeyboard === "default"}
-                  onDown={handleKeyboardDown}
                 />
               </div>
             </div>
@@ -250,9 +209,6 @@ const MyComponent = () => {
                   onClose={() => {}}
                   onChange={setNetflixInputValue}
                   variant="netflix"
-                  isActive={activeKeyboard === "netflix"}
-                  onUp={handleKeyboardUp}
-                  onDown={handleKeyboardDown}
                 />
               </div>
             </div>
@@ -269,9 +225,6 @@ const MyComponent = () => {
                   onClose={() => {}}
                   onChange={setNumericInputValue}
                   variant="numeric"
-                  isActive={activeKeyboard === "numeric"}
-                  onUp={handleKeyboardUp}
-                  onDown={handleKeyboardDown}
                 />
               </div>
             </div>
@@ -288,8 +241,6 @@ const MyComponent = () => {
                   onClose={() => {}}
                   onChange={setCustomInputValue}
                   customLayout={customLayout2}
-                  isActive={activeKeyboard === "custom"}
-                  onUp={handleKeyboardUp}
                 />
               </div>
             </div>

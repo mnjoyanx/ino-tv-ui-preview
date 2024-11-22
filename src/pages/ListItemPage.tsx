@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PageIntroHeader from "@/components/common/PageIntroHeader";
 import PageContentWrapper from "@/components/common/PageContentWrapper";
 import { InoListItem, InoCol, InoTabs, InoTab, InoButton } from "ino-ui-tv";
-import TestImage from "../test.jpg";
 import {
   Table,
   TableBody,
@@ -17,10 +16,9 @@ import { Copy } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { toast } from "sonner";
-import InoImage from "@/components/InoImage";
 
 const ListItemPage: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [, setActiveIndex] = useState(0);
 
   const propsData = [
     {

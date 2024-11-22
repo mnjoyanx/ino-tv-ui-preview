@@ -3,9 +3,9 @@ import PageIntroHeader from "@/components/common/PageIntroHeader";
 import PageContentWrapper from "@/components/common/PageContentWrapper";
 import { InoProtectInput } from "ino-ui-tv";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Copy } from "lucide-react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+// import { Copy } from "lucide-react";
+// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { toast } from "sonner";
 
 const ProtectInputPage: React.FC = () => {

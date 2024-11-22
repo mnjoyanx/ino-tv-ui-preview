@@ -3,19 +3,18 @@ import PageIntroHeader from "@/components/common/PageIntroHeader";
 import PageContentWrapper from "@/components/common/PageContentWrapper";
 import { InoPlayerProgress } from "ino-ui-tv";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Copy } from "lucide-react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { toast } from "sonner";
+// import { Copy } from "lucide-react";
+// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+// import { toast } from "sonner";
 
 const PlayerProgressPage: React.FC = () => {
   const [progress1, setProgress1] = useState(0);
   const [buffered1, setBuffered1] = useState(0);
-  const [isPlaying1, setIsPlaying1] = useState(true);
+  const [isPlaying1] = useState(true);
 
   const [progress2, setProgress2] = useState(30);
-  const [buffered2, setBuffered2] = useState(60);
-  const [isPlaying2, setIsPlaying2] = useState(false);
+  const [buffered2] = useState(60);
 
   // Simulate progress for first example
   useEffect(() => {

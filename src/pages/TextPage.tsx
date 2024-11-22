@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PageIntroHeader from "@/components/common/PageIntroHeader";
 import PageContentWrapper from "@/components/common/PageContentWrapper";
-import { InoText, InoCol } from "ino-ui-tv";
+import { InoText } from "ino-ui-tv";
 import {
   Table,
   TableBody,
