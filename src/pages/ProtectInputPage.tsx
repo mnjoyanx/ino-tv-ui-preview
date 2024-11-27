@@ -7,13 +7,17 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { toast } from "sonner";
-
+import { Mylib } from "my-lib-ino";
+// import "my-lib-ino/style.css";
+// import "my-lib-ino/style.css";
+// import test from "ino-ui-workspace/libs";
 const ProtectInputPage: React.FC = () => {
   const [activeInput, setActiveInput] = useState<1 | 2>(1);
 
   return (
     <PageContentWrapper>
       <PageIntroHeader title="Protect Input Component" />
+      <Mylib />
 
       <Tabs defaultValue="preview">
         <TabsList>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ThemeProvider } from "ino-ui-tv";
+import { InoRow, ThemeProvider } from "ino-ui-tv";
 import PageIntroHeader from "@/components/common/PageIntroHeader";
 import PageContentWrapper from "@/components/common/PageContentWrapper";
 import { InoButton } from "ino-ui-tv";
@@ -109,23 +109,23 @@ const App = () => {
 
         <TabsContent value="preview">
           <div className="space-y-8">
+            {activeTheme}
             <div className="flex gap-4">
-              {Object.keys(themes).map((theme, index) => (
-                <InoButton
-                  key={theme}
-                  index={index}
-                  onClick={() =>
-                    setActiveTheme(theme as "default" | "dark" | "light")
-                  }
-                  className={`px-4 py-2 rounded ${
-                    activeTheme === theme
-                      ? "bg-primary text-white"
-                      : "bg-gray-200"
-                  }`}
-                >
-                  {theme.charAt(0).toUpperCase() + theme.slice(1)} Theme
-                </InoButton>
-              ))}
+              <InoRow isActive={true}>
+                {Object.keys(themes).map((theme, index) => (
+                  <InoButton
+                    key={theme}
+                    isActive
+                    size="small"
+                    classNames="!text-[1.4rem] !bg-transparent !border-black !text-black static-btn"
+                    onClick={() =>
+                      setActiveTheme(theme as "default" | "dark" | "light")
+                    }
+                  >
+                    {theme.charAt(0).toUpperCase() + theme.slice(1)} Theme
+                  </InoButton>
+                ))}
+              </InoRow>
             </div>
 
             <ThemeProvider theme={themes[activeTheme]}>
